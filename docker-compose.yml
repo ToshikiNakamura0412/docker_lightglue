@@ -1,0 +1,32 @@
+x-workspace-source: &WORKSPACE_SOURCE "~/docker_lightglue"
+
+services:
+  demo:
+    container_name: lightglue-demo
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ipc: host
+    tty: true
+    privileged: true
+    environment:
+      TERM: screen-256color
+      LANG: C.UTF-8
+      DISPLAY: $DISPLAY
+      NVIDIA_DRIVER_CAPABILITIES: all
+    volumes:
+      - type: bind
+        source: /tmp/.X11-unix
+        target: /tmp/.X11-unix
+      - type: bind
+        source: *WORKSPACE_SOURCE
+        target: /home/user/ws
+    working_dir: /home/user/ws
+    command: "bash"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
