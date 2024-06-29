@@ -4,16 +4,16 @@
 
 Docker image for [LightGlue](https://github.com/cvg/LightGlue.git)
 
-<p>
-  <img src="docs/demo.gif" width="400"/>
+<p align="center">
+  <img src="docs/demo.png" width="600"/>
 </p>
 
 ## Installation
 ```bash
 git clone https://github.com/ToshikiNakamura0412/docker_lightglue.git ~/docker_lightglue
-cd docker_lightglue
+cd ~/docker_lightglue
 docker compose build
-download_images.sh
+./download_images.sh
 ```
 
 ## Usage
@@ -22,14 +22,14 @@ download_images.sh
 docker compose up -d
 ```
 
-## Demo (Easy)
+### Demo (Easy)
 ```bash
-docker compose exec lightglue-demo python3 demo.py
+docker compose exec demo python3 demo.py
 ```
 
-## Demo (Difficult)
+### Demo (Difficult)
 ```bash
-docker compose exec lightglue-demo python3 demo.py difficult
+docker compose exec demo python3 demo.py difficult
 ```
 
 ### Stop
